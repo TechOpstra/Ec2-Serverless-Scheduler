@@ -2,6 +2,7 @@ resource "aws_lambda_function" "this" {
   function_name = var.function_name
   handler       = var.handler
   runtime       = var.runtime
+  timeout       = 30
   filename      = var.filename
   source_code_hash = filebase64sha256(var.filename)
   environment {
