@@ -40,13 +40,13 @@ module "stop_lambda" {
 module "start_event" {
   source          = "./modules/cloudwatch"
   event_name      = "start-ec2-instance-event"
-  schedule_expression = "cron(0 3 ? * MON-FRI *)" # 8:00 AM IST
+  schedule_expression = "cron(00 8 ? JAN-DEC MON-FRI 2025)" 
   lambda_arn      = module.start_lambda.lambda_arn
 }
 
 module "stop_event" {
   source          = "./modules/cloudwatch"
   event_name      = "stop-ec2-instance-event"
-  schedule_expression = "cron(30 11 ? * MON-FRI *)" # 5:00 PM IST
+  schedule_expression = "cron(00 17 ? JAN-DEC MON-FRI 2025)" 
   lambda_arn      = module.stop_lambda.lambda_arn
 }
